@@ -1,0 +1,44 @@
+#login-master {
+  margin-top: 3.2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+#login-master label {
+  color: var(--color-text-in-primary);
+}
+
+#login-master button {
+  width: 20rem;
+  height: 5.6rem;
+  background: var(--color-secundary);
+  color: var(--color-button-text);
+  border: 0;
+  border-radius: 0.8rem;
+
+  cursor: pointer;
+  font: 700 1.4rem Archivo;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  transition: 0.2s;
+  margin-top: 3.2rem;
+}
+
+#login-master button:hover {
+  background: var(--color-secundary-dar k);
+}
+
+@media (min-width: 700px) {
+  #login-master {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    margin-bottom: -450px;
+  }
+}
