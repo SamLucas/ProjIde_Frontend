@@ -1,12 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Router from "./router";
+import React from "react"
+import ReactDOM from "react-dom"
+import Router from "./router"
 
-import "./assets/styles/global.css";
+import { ContentContex } from "./context_api"
+
+import "./assets/styles/global.css"
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router />
+    <ContentContex>
+      <Router />
+    </ContentContex>
   </React.StrictMode>,
   document.getElementById("root")
-);
+)

@@ -1,37 +1,65 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext } from "react"
 
-import BacKIcon from "../../assets/images/icons/back.svg";
+import { useHistory } from "react-router-dom"
+import { Context } from "../../context_api"
 
-import "./styles.css";
+import BacKIcon from "../../assets/images/icons/back.svg"
+
+import "./styles.css"
 
 interface PageHeaderProps {
-  title?: string;
-  description?: string;
-  defineHeightHeader?: boolean;
+  title?: string
+  description?: string
+  defineHeightHeader?: boolean
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({
   title,
   description,
   children,
-  defineHeightHeader
+  defineHeightHeader,
 }) => {
+  const history = useHistory()
+  const { location } = history
 
-  const history = useHistory();
+  const { authenticated, loadAplication } = useContext(Context)
+
+  const Logout = () => {
+    localStorage.clear()
+    loadAplication && loadAplication()
+    history.push("/")
+    window.location.reload()
+  }
 
   return (
-    <div className={`page-header ${!title && "page-header-heigth-min"} ${defineHeightHeader && "page-header-heigth-max"}`}>
+    <div
+      className={`page-header ${!title && "page-header-heigth-min"} ${
+        defineHeightHeader && "page-header-heigth-max"
+      }`}
+    >
       <div className="top-bar-container">
-        <img 
+        <img
           src={BacKIcon}
           alt="Voltar"
           className="goBack"
           onClick={() => {
             history.goBack()
-          }} />
+          }}
+        />
 
-        <p onClick={() => { history.push("/login")}}>Login</p>
+        {!authenticated &&
+          location.pathname !== "/register" &&
+          location.pathname !== "/login" && (
+            <p
+              onClick={() => {
+                history.push("/login")
+              }}
+            >
+              Login
+            </p>
+          )}
+
+        {authenticated && <p onClick={Logout}>Sair</p>}
       </div>
 
       <div className="header-content">
@@ -40,7 +68,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
         {children}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PageHeader;
+export default PageHeader

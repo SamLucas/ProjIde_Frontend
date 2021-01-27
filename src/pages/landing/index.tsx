@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import Logo from "../../assets/images/logo.svg";
 import LogoLanding from "../../assets/images/landing.svg";
@@ -7,13 +7,19 @@ import studyIcon from "../../assets/images/icons/study.svg";
 import giveClasssesIcon from "../../assets/images/icons/give-classes.svg";
 import purpleHeartIcons from "../../assets/images/icons/purple-heart.svg";
 
+import { Context } from "../../context_api"
+
 import "./styles.css";
 
 import { Link } from "react-router-dom";
 import api from "../../services/api";
 
 export default function Landing() {
+
+  const { authenticated } = useContext(Context)
+
   const [totalconnections, setTotalConnctions] = useState(0);
+
 
   useEffect(() => {
     async function loadData() {
@@ -36,7 +42,7 @@ export default function Landing() {
         <img src={LogoLanding} alt="" className="hero-image" />
 
         <div className="button-container">
-          <Link to="/study" className="study">
+          <Link to={authenticated ? "/panel" : "/study"} className="study">
             <img src={studyIcon} alt="Ler" />
             Ler
           </Link>

@@ -8,6 +8,31 @@ main {
   width: 90%;
 }
 
+.contentPlusAdd {
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+
+  background-color: #04d361;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addPost {
+  border: none;
+  outline: none;
+
+  color: white;
+  background: none;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
 @media (min-width: 700px) {
   #page-teacher-list {
     max-width: 100%;

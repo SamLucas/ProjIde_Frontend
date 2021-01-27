@@ -1,14 +1,18 @@
-#search-login {
+#content_login {
   margin-top: 3.2rem;
   display: flex;
   flex-direction: row;
 }
 
-#search-login label {
+#content_login label {
   color: var(--color-text-in-primary);
 }
 
-#search-login button {
+#content_login a {
+  margin: 20px 0px;
+}
+
+#content_login button {
   width: 20rem;
   height: 5.6rem;
   background: var(--color-secundary);
@@ -27,18 +31,18 @@
   margin-top: 3.2rem;
 }
 
-#search-login button:hover {
+#content_login button:hover {
   background: var(--color-secundary-dar k);
 }
 
 @media (min-width: 700px) {
-  #search-login {
+  #content_login {
     display: flex;
     flex-direction: column;
     position: absolute;
     left: 0;
     right: 0;
 
-    margin-bottom: -450px;
+    margin-bottom: -520px;
   }
 }
